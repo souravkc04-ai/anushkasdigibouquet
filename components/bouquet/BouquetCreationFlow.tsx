@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FlowerPicker from "../stages/FlowerPicker";
 import BouquetCustomizer from "../stages/BouquetCustomizer";
 import CardWriter from "../stages/CardWriter";
@@ -15,8 +15,7 @@ const steps = ["Pick Flowers", "Customize Bouquet", "Write Card", "Share"];
 // Client component that uses the bouquet context
 export default function BouquetCreationFlow() {
   const { bouquet, canProceed, setBouquet } = useBouquet();
-
-  React.useEffect(() => {
+useEffect(() => {
     setBouquet((prev) => ({
       ...prev,
       letter: {
