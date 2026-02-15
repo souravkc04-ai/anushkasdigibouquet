@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FlowerPicker from "../stages/FlowerPicker";
 import BouquetCustomizer from "../stages/BouquetCustomizer";
 import CardWriter from "../stages/CardWriter";
@@ -14,18 +14,19 @@ const steps = ["Pick Flowers", "Customize Bouquet", "Write Card", "Share"];
 
 // Client component that uses the bouquet context
 export default function BouquetCreationFlow() {
-  const { bouquet, canProceed } = useBouquet();
+    const { bouquet, canProceed, setBouquet } = useBouquet();
 
-  // Track which step the user is currently on (0-3)
-  const [currentStep, setCurrentStep] = useState(0);
+  useEffect(() => {
+    setBouquet((prev) => ({
+      ...prev,
+      letter: {
+        sender: "MR. BATMAN",
+        recipient: "Anushka",
+        message: "I could have given you real flowers, but I built you a whole digital garden instead. 🦇\n\nBefore you finish this, you have to answer me: What is the secret nickname only I call you? Message me the answer to unlock your real-life surprise!",
+      }
+    }));
+  }, [setBouquet]);
 
-  // Navigation functions
-  const nextStep = () =>
-    setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1)); // Move forward, but don't exceed max step
-  const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 0)); // Move backward, but don't go below 0
-
-  return (
-    <main className="container flex flex-col p-4 mx-auto">
       {/* Logo/Branding */}
       <Link href="/">
         <Image
