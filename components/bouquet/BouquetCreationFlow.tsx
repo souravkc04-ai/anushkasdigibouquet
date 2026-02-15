@@ -14,7 +14,17 @@ const steps = ["Pick Flowers", "Customize Bouquet", "Write Card", "Share"];
 
 // Client component that uses the bouquet context
 export default function BouquetCreationFlow() {
-  const { bouquet, canProceed } = useBouquet();
+  const { bouquet, canProceed, setBouquet } = useBouquet();
+  React.useEffect(() => {
+  setBouquet((prev) => ({
+    ...prev,
+    letter: {
+      sender: "MR. BATMAN",
+      recipient: "Anushka",
+      message: "I could have given you real flowers, but I built you a whole digital garden instead. 🦇\n\nBefore you finish this, you have to answer me: What is the secret nickname only I call you? Message me the answer to unlock your real-life surprise!",
+    }
+  }));
+  }, [setBouquet]);
 
   // Track which step the user is currently on (0-3)
   const [currentStep, setCurrentStep] = useState(0);
