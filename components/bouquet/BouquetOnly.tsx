@@ -65,16 +65,16 @@ export default function BouquetOnly({ bouquet }: BouquetReadOnlyProps) {
                         className="flex items-center justify-center pt-4 relative"
                         style={{ order: index }} // CSS order property controls visual arrangement
                       >
-                        {/* Individual flower image */}
-                        <Image
-                          src={`/${bouquet.mode}/flowers/${flowerData.name}.png`}
-                          alt={flowerData.name}
-                          width={dimensions}
-                          height={dimensions}
-                          className="relative z-10 transition-transform hover:scale-105"
-                          style={{ transform: `rotate(${rotation}deg)` }} // Apply random rotation
-                          priority
-                        />
+                                  {/* Individual flower image */}
+          <Image
+            src={`/flowers/${flower.id}.png`}
+            alt={flowerData.name}
+            width={getFlowerDimensions(flowerData.size)}
+            height={getFlowerDimensions(flowerData.size)}
+            className="relative z-10 transition-transform hover:scale-110"
+            style={{ transform: `rotate(${Math.random() * 10 - 5}deg)` }}
+          />
+
                       </div>
                     );
                   });
