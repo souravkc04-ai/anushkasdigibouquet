@@ -22,7 +22,7 @@ export default function Home() {
           priority
         />
         <p className="my-6 text-sm md:mb-6 md:-mt-6">
-          beautiful flowers <br /> delivered digitally
+          pick your petals wisely—I’ve already checked, and none of these are as pretty as you. (I know, I’m cheesy. Just start clicking)
         </p>
         <div className="flex flex-col justify-center items-center">
           <Link
