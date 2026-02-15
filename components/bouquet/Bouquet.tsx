@@ -70,16 +70,19 @@ export default function Bouquet({ bouquet }: BouquetReadOnlyProps) {
                           className="flex relative justify-center items-center pt-4"
                           style={{ order: index }} // CSS order property controls visual arrangement
                         >
-                          {/* Individual flower image */}
-                          <Image
-                            src={`/${bouquet.mode}/flowers/${flowerData.name}.png`}
-                            alt={flowerData.name}
-                            width={dimensions}
-                            height={dimensions}
-                            className="relative z-10 transition-transform hover:scale-105"
-                            style={{ transform: `rotate(${rotation}deg)` }} // Apply random rotation
-                            priority
-                          />
+                                    {/* Individual flower image */}
+          <Image
+            src={`/flowers/${flower.id}.png`}
+            alt={flowerData.name}
+            width={getFlowerDimensions(flowerData.size)}
+            height={getFlowerDimensions(flowerData.size)}
+            className="relative z-10 transition-transform hover:scale-110"
+            style={{ 
+              transform: `rotate(${Math.random() * 20 - 10}deg)`,
+              filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.1))"
+            }}
+          />
+
                         </div>
                       );
                     });
