@@ -25,7 +25,7 @@ export default function BouquetCreationFlow() {
         message: "Every flower in this digital garden is a reminder of how lucky I am to have you. You make everything brighter. ❤️",
       },
       {
-        sender: "The Batcave",
+        sender: "pineapple",
         message: "Hurdle Alert! ⚠️ To unlock the final bouquet, you must promise to go on a dinner date with me this weekend. Do you accept? 😉",
       }
     ];
