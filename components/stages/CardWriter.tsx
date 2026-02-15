@@ -6,7 +6,7 @@ export default function CardWriter() {
   return (
     <div className="text-center">
       <div>
-        <h2 className="text-md my-8">WRITE THE CARD</h2>
+        <h2 className="text-md my-8">A MESSAGE FROM THE BATCAVE</h2>
         <div className="flex flex-row items-center justify-center">
           {/* White card container with black border */}
           <div className="flex flex-row items-center justify-center -space-x-12">
