@@ -4,16 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BouquetOnly from "../../components/bouquet/BouquetOnly";
 
-export default async function AllBouquetsPage() {
-  const { data, error } = await supabase
-    .from("bouquets")
-    .select("*")
-    .order("created_at", { ascending: false }); // optional: sort by latest
-
-  if (error || !data) {
-    return <div>Error fetching bouquets.</div>;
-  }
-
+export default function AllBouquetsPage() {
   return (
     <div className="text-center p-6">
       <Link href="/">
@@ -27,25 +18,40 @@ export default async function AllBouquetsPage() {
         />
       </Link>
 
-      {/* Page title */}
-      <h2 className="text-md uppercase mb-4 ">OUR GARDEN</h2>
+      {/* Page Title */}
+      <h2 className="text-xl uppercase mb-4">OUR GARDEN</h2>
       <p className="text-sm opacity-50 mb-10">Thanks for stopping by!</p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
-        {data.map((bouquet) => (
-          //   <Link href={`/bouquet/${bouquet.id}`} key={bouquet.id}>
-          <div>
-            <div>
-              <BouquetOnly bouquet={bouquet} />
-            </div>
-            <p className="text-sm text-gray-500 m-10">
-              {new Date(bouquet.created_at).toLocaleDateString()}
-            </p>
-          </div>
+      <GardenContent />
+    </div>
+  );
+}
 
-          //   </Link>
-        ))}
-      </div>
+// Separate component to handle the randomizing logic
+async function GardenContent() {
+  const { data, error } = await supabase
+    .from("bouquets")
+    .select("*");
+
+  if (error || !data) {
+    return <div>Error fetching bouquets. Check Batcave connections.</div>;
+  }
+
+  // THE RANDOMIZER: Shuffles the fetched bouquets
+  const shuffledBouquets = [...data].sort(() => 0.5 - Math.random());
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
+      {shuffledBouquets.map((bouquet) => (
+        <div key={bouquet.id} className="flex flex-col items-center">
+          <div className="w-full">
+             <BouquetOnly bouquet={bouquet} />
+          </div>
+          <p className="text-xs text-gray-500 mt-4">
+            {new Date(bouquet.created_at).toLocaleDateString()}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }
