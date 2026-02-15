@@ -9,22 +9,39 @@ import Image from "next/image";
 import Link from "next/link";
 import { useBouquet } from "../../context/BouquetContext";
 
-// Define the 4 steps of the bouquet creation process
 const steps = ["Pick Flowers", "Customize Bouquet", "A Message from the Batcave", "Share"];
 
-// Client component that uses the bouquet context
 export default function BouquetCreationFlow() {
   const { bouquet, canProceed, setBouquet } = useBouquet();
-useEffect(() => {
+
+  useEffect(() => {
+    const surprises = [
+      {
+        sender: "MR. BATMAN",
+        message: "I could have given you real flowers, but I built you a whole digital garden instead. 🦇\n\nBefore you finish this, you have to answer me: What is the secret nickname only I call you? Message me the answer to unlock your real-life surprise!",
+      },
+      {
+        sender: "Sourav",
+        message: "Every flower in this digital garden is a reminder of how lucky I am to have you. You make everything brighter. ❤️",
+      },
+      {
+        sender: "The Batcave",
+        message: "Hurdle Alert! ⚠️ To unlock the final bouquet, you must promise to go on a dinner date with me this weekend. Do you accept? 😉",
+      }
+    ];
+
+    const randomSurprise = surprises[Math.floor(Math.random() * surprises.length)];
+
     setBouquet((prev) => ({
       ...prev,
       letter: {
-        sender: "MR. BATMAN",
+        sender: randomSurprise.sender,
         recipient: "Anushka",
-        message: "I could have given you real flowers, but I built you a whole digital garden instead. 🦇\n\nBefore you finish this, you have to answer me: What is the secret nickname only I call you? Message me the answer to unlock your real-life surprise!",
+        message: randomSurprise.message,
       }
     }));
   }, [setBouquet]);
+
   // Track which step the user is currently on (0-3)
   const [currentStep, setCurrentStep] = useState(0);
 
