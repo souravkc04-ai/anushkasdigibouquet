@@ -46,15 +46,10 @@ export default function Home() {
           </Link>
         </div>
 
-        <p className="mt-10 text-sm text-gray-500">
-          made by{" "}
-          <Link
-            href="https://x.com/pau_wee_"
-            className="mt-2 text-sm text-gray-500 underline"
-          >
-            @pau_wee_
-          </Link>
-        </p>
+        <p className="mt-10 text-sm text-gray-300">
+  made by MR BATMAN
+</p>
+
       </div>
     </div>
   );
