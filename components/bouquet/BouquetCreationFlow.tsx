@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useBouquet } from "../../context/BouquetContext";
 
 // Define the 4 steps of the bouquet creation process
-const steps = ["Pick Flowers", "Customize Bouquet", "Write Card", "Share"];
+const steps = ["Pick Flowers", "Customize Bouquet", "A Message from the Batcave", "Share"];
 
 // Client component that uses the bouquet context
 export default function BouquetCreationFlow() {
