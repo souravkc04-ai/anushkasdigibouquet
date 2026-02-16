@@ -49,7 +49,8 @@ export default async function AllBouquetsPage() {
             </div>
             {/* Optional: Add a very small date or ID below each one */}
             <span className="text-[10px] opacity-30 mt-1 uppercase">
-               {new Date(bouquet.created_at).toLocaleDateString()}
+               {bouquet.sender_name || "Anonymous"}
+
             </span>
           </div>
         ))}
