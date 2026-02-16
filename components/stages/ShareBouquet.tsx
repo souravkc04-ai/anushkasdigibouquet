@@ -16,13 +16,16 @@ export default function ShareBouquet() {
     try {
       const { error } = await supabase
         .from("bouquets")
-        .insert([
+                .insert([
           { 
             flowers: bouquet.flowers, 
             letter: bouquet.letter,
+            // ADD THIS LINE TO CONNECT TO THE BATCAVE
+            sender_name: bouquet.letter.sender, 
             created_at: new Date().toISOString() 
           }
         ]);
+
 
       if (error) throw error;
       setSaved(true);
